@@ -32,9 +32,6 @@ void ConfigReader::parseConfig() {
             break;
         }
     }
-    std::cout << "Order:" << std::endl;
-    for (int i = 0; i < config.size(); i++)
-        std::cout << i << ": type(" << config[i].first << ") args("<<  config[i].second << ")" << std::endl;
 }
 
 ConfigReader::ConfigReader(const std::string &filename) {
