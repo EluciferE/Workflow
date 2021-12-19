@@ -12,9 +12,6 @@ std::map<int, std::pair<std::string, std::string>> ConfigReader::getConfig() con
 void ConfigReader::parseConfig() {
     std::string line;
     bool order_flag = false;
-    std::regex task(R"(([\d]+)[ ]*=[ ]*([\w]+)[ ]*([\w ]*))");
-
-    std::string task_number, type, args;
 
     while (!config_file.eof()) {
         std::getline(config_file, line);
