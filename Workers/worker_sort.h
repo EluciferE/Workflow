@@ -2,6 +2,7 @@
 #define WORKFLOW_WORKER_SORT_H
 
 #include "worker.h"
+#include <algorithm>
 
 class WorkerSort: public Worker{
 public:

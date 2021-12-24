@@ -5,6 +5,7 @@
 #include "worker_sort.h"
 
 std::vector<std::string> WorkerSort::process(std::vector<std::string> &in, std::string &args) {
-    return std::vector<std::string>();
+    std::sort(in.begin(), in.end());
+    return in;
 }
 
