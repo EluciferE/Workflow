@@ -2,6 +2,7 @@
 #define WORKFLOW_WORKER_REPLACE_H
 
 #include "worker.h"
+#include <regex>
 
 class WorkerReplace: public Worker{
 public:
