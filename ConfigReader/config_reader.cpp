@@ -40,10 +40,10 @@ ConfigReader::~ConfigReader() {
 }
 
 void ConfigReader::parseTask(std::string &line) {
-    std::regex task_regexp(R"(([\d]+)[ ]*=[ ]*([\w]+)[ ]*([\w ]*))");
+    std::regex task_regex(R"(([\d]+)[ ]*=[ ]*([\w]+)[ ]*([\w .]*))");
     std::string task_number, type, args;
 
-    auto task_begin = std::sregex_iterator(line.begin(), line.end(), task_regexp);
+    auto task_begin = std::sregex_iterator(line.begin(), line.end(), task_regex);
     std::smatch match = *task_begin;
     if (match.begin() + 1 < match.end())
         task_number = (match.begin() + 1)->str();
@@ -67,5 +67,9 @@ void ConfigReader::parseOrder(std::string &line) {
 
     task_number = std::stoi(line.substr(start, end - start));
     order.insert(order.end(), task_number);
+}
+
+std::vector<int> ConfigReader::getOrder() const {
+    return order;
 }
 
