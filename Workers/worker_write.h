@@ -2,6 +2,7 @@
 #define WORKFLOW_WORKER_WRITE_H
 
 #include "worker.h"
+#include <fstream>
 
 class WorkerWrite: public Worker{
 public:
