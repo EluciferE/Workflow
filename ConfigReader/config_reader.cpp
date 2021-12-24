@@ -45,6 +45,8 @@ void ConfigReader::parseTask(std::string &line) {
 
     auto task_begin = std::sregex_iterator(line.begin(), line.end(), task_regex);
     std::smatch match = *task_begin;
+
+    // match.begin() = full string, so we do +1 -> +3
     if (match.begin() + 1 < match.end())
         task_number = (match.begin() + 1)->str();
     if (match.begin() + 2 < match.end())
