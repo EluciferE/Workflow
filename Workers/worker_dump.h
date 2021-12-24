@@ -2,6 +2,7 @@
 #define WORKFLOW_WORKER_DUMP_H
 
 #include "worker.h"
+#include <fstream>
 
 class WorkerDump: public Worker{
 public:
