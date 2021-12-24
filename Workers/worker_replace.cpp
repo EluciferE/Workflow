@@ -5,6 +5,10 @@
 #include "worker_replace.h"
 
 std::vector<std::string> WorkerReplace::process(std::vector<std::string> &in, std::string &args) {
+
+    if ((in.size() == 1) && (in[0].empty()))
+        throw WorkerException("Bad order for 'replace' (got empty data'");
+
     std::regex regex_task("(.*) (.*)");
     std::string word1, word2;
 
@@ -15,6 +19,9 @@ std::vector<std::string> WorkerReplace::process(std::vector<std::string> &in, st
         word1 = (match.begin() + 1)->str();
     if (match.begin() + 2 < match.end())
         word2 = (match.begin() + 2)->str();
+
+    if (word1.empty() || word2.empty())
+        throw WorkerException("Bad args for 'replace' (got '" + word1 +"' '" + word2 + "')");
 
     size_t pos = 0;
 

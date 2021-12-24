@@ -11,7 +11,9 @@ std::vector<std::string> WorkerRead::process(std::vector<std::string> &in, std::
     std::fstream file_in;
     file_in.open(args);
 
-    // TODO check error
+    if (!file_in)
+        throw WorkerException("can't open file '" + args + "' for reading");
+
     while (!file_in.eof()){
         getline(file_in, buffer);
         data.insert(data.end(), buffer);

@@ -3,10 +3,12 @@
 //
 
 #include "worker_grep.h"
-#include <regex>
 
 std::vector<std::string> WorkerGrep::process(std::vector<std::string> &in, std::string &args) {
     std::vector<std::string> new_data;
+
+    if ((in.size() == 1) && (in[0].empty()))
+        throw WorkerException("Bad order for 'grep' (got empty data)");
 
     for (auto &line: in){
         if (line.find(args) != std::string::npos)

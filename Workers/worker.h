@@ -3,6 +3,7 @@
 
 #include <string>
 #include <vector>
+#include "../Exceptions/worker_exception.h"
 
 class Worker{
 public:

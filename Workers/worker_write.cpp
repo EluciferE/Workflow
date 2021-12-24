@@ -8,7 +8,12 @@ std::vector<std::string> WorkerWrite::process(std::vector<std::string> &in, std:
     std::ofstream out;
     out.open(args);
 
-    // TODO check errors
+    if (!out)
+        throw WorkerException("Cant open file '" + args + "' for writing");
+
+    if ((in.size() == 1) && (in[0].empty()))
+        throw WorkerException("Bad order for 'write' (got empty data)");
+
     for (auto & i : in)
         out << i << "\n";
 

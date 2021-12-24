@@ -8,7 +8,12 @@ std::vector<std::string> WorkerDump::process(std::vector<std::string> &in, std::
     std::ofstream out;
     out.open(args);
 
-    // TODO check errors
+    if ((in.size() == 1) && (in[0].empty()))
+        throw WorkerException("Bad order for 'dump' (got empty data)");
+
+    if (!out)
+        throw WorkerException("can't create file '" + args + "' for dump");
+
     for (auto & i : in)
         out << i << "\n";
 
