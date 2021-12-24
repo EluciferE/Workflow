@@ -25,6 +25,7 @@ public:
     ~ConfigReader();
 
     std::map<int, std::pair<std::string, std::string>> getConfig() const;
+    std::vector<int> getOrder() const;
     void parseConfig();
 };
 
