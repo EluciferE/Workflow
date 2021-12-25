@@ -6,8 +6,8 @@
 
 class WorkerReplace: public Worker{
 public:
-    void process (WorkData& in, std::string& args) override;
-    static std::pair<std::string, std::string> parseArgs(std::string args);
+    void process (WorkData& in, const std::string& args) const override;
+    static std::pair<std::string, std::string> parseArgs(const std::string& args);
 };
 
 

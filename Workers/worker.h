@@ -8,7 +8,7 @@
 
 class Worker{
 public:
-    virtual void process (WorkData& in, std::string& args) = 0;
+    virtual void process (WorkData& in, const std::string& args) const = 0;
 };
 
 

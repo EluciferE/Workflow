@@ -6,7 +6,7 @@
 
 class WorkerRead: public Worker{
 public:
-    void process (WorkData& in, std::string& args) override;
+    void process (WorkData& in, const std::string& args) const override;
 };
 
 

@@ -4,7 +4,7 @@
 
 #include "worker_read.h"
 
-void WorkerRead::process(WorkData &in, std::string &args) {
+void WorkerRead::process(WorkData &in, const std::string &args) const {
     std::vector<std::string> data;
     std::string buffer;
 

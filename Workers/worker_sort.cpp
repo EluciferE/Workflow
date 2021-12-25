@@ -4,7 +4,7 @@
 
 #include "worker_sort.h"
 
-void WorkerSort::process(WorkData &in, std::string &args) {
+void WorkerSort::process(WorkData &in, const std::string &args) const {
     if (!in.getFilled())
         throw WorkerException("Bad order for 'sort' (got empty data)");
 

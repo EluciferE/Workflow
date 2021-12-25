@@ -4,7 +4,7 @@
 
 #include "worker_grep.h"
 
-void WorkerGrep::process(WorkData &in, std::string &args) {
+void WorkerGrep::process(WorkData &in, const std::string &args) const {
     std::vector<std::string> new_data;
 
     if (!in.getFilled())

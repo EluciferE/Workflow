@@ -4,7 +4,7 @@
 
 #include "worker_write.h"
 
-void WorkerWrite::process(WorkData &in, std::string &args) {
+void WorkerWrite::process(WorkData &in, const std::string &args) const {
     std::ofstream out;
     out.open(args);
 

@@ -4,7 +4,7 @@
 
 #include "worker_dump.h"
 
-void WorkerDump::process(WorkData &in, std::string &args) {
+void WorkerDump::process(WorkData &in, const std::string &args) const {
     std::ofstream out;
     out.open(args);
 

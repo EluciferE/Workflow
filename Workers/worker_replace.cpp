@@ -4,7 +4,7 @@
 
 #include "worker_replace.h"
 
-void WorkerReplace::process(WorkData &in, std::string &args) {
+void WorkerReplace::process(WorkData &in, const std::string &args) const {
     std::vector<std::string> new_data = in.getData();
 
     if (!in.getFilled())
@@ -25,7 +25,7 @@ void WorkerReplace::process(WorkData &in, std::string &args) {
     in.setData(new_data);
 }
 
-std::pair<std::string, std::string> WorkerReplace::parseArgs(std::string args) {
+std::pair<std::string, std::string> WorkerReplace::parseArgs(const std::string& args) {
     std::regex regex_task("(.*) (.*)");
     std::string word1, word2;
 
