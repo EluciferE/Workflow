@@ -5,7 +5,7 @@
 
 class WorkerGrep: public Worker{
 public:
-    std::vector<std::string> process (std::vector<std::string>& in, std::string& args) override;
+    void process (WorkData& in, std::string& args) override;
 
 };
 

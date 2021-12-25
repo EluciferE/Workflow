@@ -4,20 +4,20 @@
 
 #include "worker_write.h"
 
-std::vector<std::string> WorkerWrite::process(std::vector<std::string> &in, std::string &args) {
+void WorkerWrite::process(WorkData &in, std::string &args) {
     std::ofstream out;
     out.open(args);
+
+    if (!in.getFilled())
+        throw WorkerException("Bad order for 'write' (got empty data)");
 
     if (!out)
         throw WorkerException("Cant open file '" + args + "' for writing");
 
-    if ((in.size() == 1) && (in[0].empty()))
-        throw WorkerException("Bad order for 'write' (got empty data)");
 
-    for (auto & i : in)
+    for (auto & i : in.getData())
         out << i << "\n";
 
     out.close();
-
-    return std::vector<std::string>();
+    in.setFilled(false);
 }

@@ -4,20 +4,18 @@
 
 #include "worker_dump.h"
 
-std::vector<std::string> WorkerDump::process(std::vector<std::string> &in, std::string &args) {
+void WorkerDump::process(WorkData &in, std::string &args) {
     std::ofstream out;
     out.open(args);
 
-    if ((in.size() == 1) && (in[0].empty()))
+    if (!in.getFilled())
         throw WorkerException("Bad order for 'dump' (got empty data)");
 
     if (!out)
         throw WorkerException("can't create file '" + args + "' for dump");
 
-    for (auto & i : in)
+    for (auto & i : in.getData())
         out << i << "\n";
 
     out.close();
-
-    return in;
 }

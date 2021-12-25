@@ -4,9 +4,12 @@
 
 #include "worker_read.h"
 
-std::vector<std::string> WorkerRead::process(std::vector<std::string> &in, std::string &args) {
+void WorkerRead::process(WorkData &in, std::string &args) {
     std::vector<std::string> data;
     std::string buffer;
+
+    if (in.getFilled())
+        throw WorkerException("Bad order for 'read' (got some data)");
 
     std::fstream file_in;
     file_in.open(args);
@@ -18,6 +21,6 @@ std::vector<std::string> WorkerRead::process(std::vector<std::string> &in, std::
         getline(file_in, buffer);
         data.insert(data.end(), buffer);
     }
-
-    return data;
+    in.setData(data);
+    in.setFilled(true);
 }

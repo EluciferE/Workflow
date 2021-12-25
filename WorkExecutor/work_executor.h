@@ -14,6 +14,7 @@
 #include "../Workers/worker_replace.h"
 #include "../Workers/worker_sort.h"
 #include "../Workers/worker_write.h"
+#include "work_data.h"
 
 class WorkerExecutor{
 public:

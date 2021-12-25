@@ -3,14 +3,8 @@
 
 void WorkerExecutor::Execute(std::map<int, std::pair<std::string, std::string>>& config, const std::vector<int>& order) {
     std::string type, args, buffer;
-    std::ifstream in;
 
-    std::vector<std::string> data;
-
-    while (!in.eof()){
-        std::getline(in, buffer);
-        data.insert(data.end(), buffer);
-    }
+    WorkData data;
 
     Worker* worker;
     for (auto i: order){
@@ -35,7 +29,7 @@ void WorkerExecutor::Execute(std::map<int, std::pair<std::string, std::string>>&
         else
             throw ExecutorException("Unknown type: " + type);
 
-        data = worker->process(data, args);
+        worker->process(data, args);
     }
 
 }

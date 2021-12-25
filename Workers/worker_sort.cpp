@@ -4,11 +4,12 @@
 
 #include "worker_sort.h"
 
-std::vector<std::string> WorkerSort::process(std::vector<std::string> &in, std::string &args) {
-    if ((in.size() == 1) && (in[0].empty()))
+void WorkerSort::process(WorkData &in, std::string &args) {
+    if (!in.getFilled())
         throw WorkerException("Bad order for 'sort' (got empty data)");
 
-    std::sort(in.begin(), in.end());
-    return in;
+    std::vector<std::string> new_data = in.getData();
+    std::sort(new_data.begin(), new_data.end());
+    in.setData(new_data);
 }
 

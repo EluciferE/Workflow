@@ -4,10 +4,11 @@
 #include <string>
 #include <vector>
 #include "../Exceptions/worker_exception.h"
+#include "../WorkExecutor/work_data.h"
 
 class Worker{
 public:
-    virtual std::vector<std::string> process (std::vector<std::string>& in, std::string& args) = 0;
+    virtual void process (WorkData& in, std::string& args) = 0;
 };
 
 

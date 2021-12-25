@@ -4,11 +4,28 @@
 
 #include "worker_replace.h"
 
-std::vector<std::string> WorkerReplace::process(std::vector<std::string> &in, std::string &args) {
+void WorkerReplace::process(WorkData &in, std::string &args) {
+    std::vector<std::string> new_data = in.getData();
 
-    if ((in.size() == 1) && (in[0].empty()))
-        throw WorkerException("Bad order for 'replace' (got empty data'");
+    if (!in.getFilled())
+        throw WorkerException("Bad order for 'replace' (got empty data)");
 
+    std::pair<std::string, std::string> parsed = parseArgs(args);
+    std::string word1 = parsed.first, word2 = parsed.second;
+
+    size_t pos = 0;
+
+    for (auto& line: new_data){
+        while (line.find(word1, pos) != std::string::npos){
+            line.replace(line.find(word1, pos), word1.size(), word2);
+            pos += word2.size();
+        }
+    }
+
+    in.setData(new_data);
+}
+
+std::pair<std::string, std::string> WorkerReplace::parseArgs(std::string args) {
     std::regex regex_task("(.*) (.*)");
     std::string word1, word2;
 
@@ -23,14 +40,5 @@ std::vector<std::string> WorkerReplace::process(std::vector<std::string> &in, st
     if (word1.empty() || word2.empty())
         throw WorkerException("Bad args for 'replace' (got '" + word1 +"' '" + word2 + "')");
 
-    size_t pos = 0;
-
-    for (auto& line: in){
-        while (line.find(word1, pos) != std::string::npos){
-            line.replace(line.find(word1, pos), word1.size(), word2);
-            pos += word2.size();
-        }
-    }
-
-    return in;
+    return {word1, word2};
 }
