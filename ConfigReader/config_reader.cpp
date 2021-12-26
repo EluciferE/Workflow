@@ -5,7 +5,7 @@
 #include "config_reader.h"
 #include <iostream>
 
-std::map<int, std::pair<std::string, std::string>> ConfigReader::getConfig() const {
+const std::map<int, std::pair<std::string, std::string>>& ConfigReader::getConfig() const {
     return config;
 }
 
@@ -71,7 +71,7 @@ void ConfigReader::parseOrder(std::string &line) {
     order.insert(order.end(), task_number);
 }
 
-std::vector<int> ConfigReader::getOrder() const {
+const std::vector<int>& ConfigReader::getOrder() const {
     return order;
 }
 

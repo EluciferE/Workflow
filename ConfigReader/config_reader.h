@@ -24,8 +24,8 @@ public:
     explicit ConfigReader(const std::string& filename);
     ~ConfigReader();
 
-    std::map<int, std::pair<std::string, std::string>> getConfig() const;
-    std::vector<int> getOrder() const;
+    const std::map<int, std::pair<std::string, std::string>>& getConfig() const;
+    const std::vector<int>& getOrder() const;
     void parseConfig();
 };
 
