@@ -8,6 +8,7 @@ int main(int argv, char** argc) {
             throw ExecutorException("Bad number of args: expected 1, but got " + std::to_string(argv - 1));
 
         ConfigReader reader(argc[1]);
+        reader.parseConfig();
         auto config = reader.getConfig();
         auto order = reader.getOrder();
 
