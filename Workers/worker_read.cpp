@@ -21,6 +21,6 @@ void WorkerRead::process(WorkData &in, const std::string &args) const {
         getline(file_in, buffer);
         data.insert(data.end(), buffer);
     }
-    in.setData(data);
+    in.setData(std::move(data));
     in.setFilled(true);
 }

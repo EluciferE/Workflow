@@ -1,7 +1,7 @@
 #include "work_data.h"
 
-void WorkData::setData(std::vector<std::string>& new_data) {
-    data = new_data;
+void WorkData::setData(std::vector<std::string> new_data) {
+    data = std::move(new_data);
 }
 
 std::vector<std::string> &WorkData::getData() {

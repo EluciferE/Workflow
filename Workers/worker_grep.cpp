@@ -14,5 +14,5 @@ void WorkerGrep::process(WorkData &in, const std::string &args) const {
         if (line.find(args) != std::string::npos)
             new_data.insert(new_data.end(), line);
     }
-    in.setData(new_data);
+    in.setData(std::move(new_data));
 }

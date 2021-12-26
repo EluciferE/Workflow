@@ -22,7 +22,7 @@ void WorkerReplace::process(WorkData &in, const std::string &args) const {
         }
     }
 
-    in.setData(new_data);
+    in.setData(std::move(new_data));
 }
 
 std::pair<std::string, std::string> WorkerReplace::parseArgs(const std::string& args) {

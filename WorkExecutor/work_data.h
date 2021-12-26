@@ -9,7 +9,7 @@ private:
     bool filled = false;
     std::vector<std::string> data;
 public:
-    void setData(std::vector<std::string>& new_data);
+    void setData(std::vector<std::string> new_data);
     std::vector<std::string>& getData();
     void setFilled(bool is_filled);
     bool getFilled() const;

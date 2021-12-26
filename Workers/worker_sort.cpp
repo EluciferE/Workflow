@@ -10,6 +10,6 @@ void WorkerSort::process(WorkData &in, const std::string &args) const {
 
     std::vector<std::string> new_data = in.getData();
     std::sort(new_data.begin(), new_data.end());
-    in.setData(new_data);
+    in.setData(std::move(new_data));
 }
 
