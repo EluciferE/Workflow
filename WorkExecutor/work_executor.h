@@ -5,6 +5,8 @@
 #include <map>
 #include <vector>
 #include <fstream>
+#include <memory>
+
 #include "../Exceptions/executor_exceptions.h"
 
 // Workers

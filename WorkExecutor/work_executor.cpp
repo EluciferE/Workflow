@@ -6,7 +6,7 @@ void WorkerExecutor::Execute(std::map<int, std::pair<std::string, std::string>>&
 
     WorkData data;
 
-    Worker* worker;
+    std::unique_ptr<Worker> worker;
     for (auto i: order){
         if (config.find(i) == config.end())
             throw ExecutorException("Cant call block " + std::to_string(i));
@@ -15,17 +15,17 @@ void WorkerExecutor::Execute(std::map<int, std::pair<std::string, std::string>>&
         args = config[i].second;
 
         if (type == "readfile")
-            worker = new WorkerRead;
+            worker = std::make_unique<WorkerRead>();
         else if (type == "writefile")
-            worker = new WorkerWrite;
+            worker = std::make_unique<WorkerWrite>();
         else if (type == "grep")
-            worker = new WorkerGrep ;
+            worker = std::make_unique<WorkerGrep>();
         else if (type == "sort")
-            worker = new WorkerSort ;
+            worker = std::make_unique<WorkerSort>();
         else if (type == "replace")
-            worker = new WorkerReplace ;
+            worker = std::make_unique<WorkerReplace>();
         else if (type == "dump")
-            worker = new WorkerDump ;
+            worker = std::make_unique<WorkerDump>();
         else
             throw ExecutorException("Unknown type: " + type);
 
